@@ -1,5 +1,5 @@
-TITLE = 'ΣΚΑΪ'
-#TITLE = "SKAI"
+#TITLE = 'ΣΚΑΪ'
+TITLE = "SKAI"
 PREFIX = "/video/skai"
 
 ICON = "icon-default.png"
@@ -146,84 +146,5 @@ def CreateEpisodeObject(title, summary, thumb, episode_video_url, include_contai
 ####################################################################################################
 def PlayVideo(episode_video_url):
   return Redirect(episode_video_url)
-
-####################################################################################################
-@route(PREFIX + '/LiveStreamMenu')
-def LiveStreamMenu(title):  
- 
-
-  # check this out 
-  # http://www.skai.gr/Ajax.aspx?m=Nv.SqlModule&name=player_media_list_cat&pg=1&categoryid=64246&mediatype=TV
-  # rtmp://cp67754.edgefcs.net/ondemand/mp4:content/201206/video/politikoApg20120618.mp4 
-  # rtmp info:
-  #  Stream 0
-  #   Type: Video
-  #    Codec H264 - MPEG-4 AVC (part 10) (avc1)
-  #    Resolution  592x424
-  #    Dsiplay resolution: 588x424
-  #    Frame rate 25
-  #    Decoded Format: Planar 4:2:0 YUV
-  #  Stream 1
-  #   Type: Audio
-  #    Codec: MPEG AAC Audio (mp4a)
-  #    Channels: Stereo
-  #    Sample rate: 44100Hz
-  #   Stream 2
-  #    Type: Subtitle  
-  #     Codec: Text subtitles with various tags (subt)
-
-  Log("LiveStreamMenu ()")
-  oc = ObjectContainer(title2 = "Live Streams")
-  
-  oc.add( VideoClipObject(
-    url = 'rtmp://cp67754.edgefcs.net/ondemand/mp4:content/201206/video/politikoApg20120618.mp4',
-    title = 'xtitle',
-    summary = 'xsummary',
-    thumb = R(ART)))
-  #oc.add( VideoClipObject( url = 'https://www.youtube.com/watch?v=loLWDWx-0i0'))#, title = 'static title', summary = 'static summary'))
-  #html_elements = HTML.ElementFromURL('http://www.skai.gr/player/tvlive/')
-  #live_stream_html5 = stream_html.xpath('/html/body/div[3]/div[2]')
-  #p_file = html_elements.xpath('//*[@id="p-file"]/text()')[0]
-  #p_image = html_elements.xpath('//*[@id="p-image"]')[0]
-  #p_title = html_elements.xpath('//*[@id="p-title"]')[0]
-  #Log(p_file)
-  #title = 'title'
-  #summary = 'summary'
-  #Log.Debug('fuck')
-  #Log("PLEX  p_file")
-  #Log(p_file)
-  
-  #urlx = 'https://www.youtube.com/embed/loLWDWx-0i0?wmode=transparent&rel=0&showinfo=0&enablejsapi=1&origin=http%3A%2F%2Fwww.skai.gr'
-  #Log(stream_html5)
-  #Log(summary)
-  #Log(title)
-
-  #oc.add(VidoClipObject(  
-  #  url = 'https://www.youtube.com/watch?v=' + p_file,
-  #  title = p_title,
-  #  summary = summary,
-  #  thumb = p_image))
-
-  return oc
-
-  #for stream_id in LIVE_STREAMS:
-  #  stream_xml = XML.ElementFromURL(LIVE_STREAM_BASE_URL % stream_id, cacheTime = 0)
-  #  stream = stream_xml.xpath("//streams/stream")[0]
-
-  #  if stream.get('command') == 'start':
-  #    title = stream.xpath("./title/text()")[0]
-  #    summary = stream.xpath("./description/text()")[0]
-
-  #    oc.add(VideoClipObject(
-  #      url = LIVE_URL % stream_id,
-  #      title = title,
-  #      summary = summary))
-
-  #if len(oc) == 0:
-  #  return MessageContainer(
-  #    header = "CNN Live Streams", 
-  #    message = "No streams available at present")   
-
-  #  return oc
 
 ####################################################################################################
